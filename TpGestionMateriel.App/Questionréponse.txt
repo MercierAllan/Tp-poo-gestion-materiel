@@ -1,0 +1,32 @@
+1. Quelle est la différence entre un test manuel et un test unitaire ?
+   Un test manuel est effectué à la main par le développeur qui regarde si le résultat
+   affiché est correct. Un test unitaire est un morceau de code qui vérifie automatiquement
+   qu'une méthode retourne bien le résultat attendu, avec "dotnet test", tous les tests
+   se lancent en une seule commande
+
+2. Pourquoi place-t-on les tests dans un projet séparé ?
+   Pour ne pas mélanger le code de l'application et le code de test
+   Le projet principal ne contient que les classes métier
+   On ne déploie pas les tests en production
+   Cela garde une organisation propre et professionnelle
+
+3. Pourquoi faut-il tester plusieurs cas pour une même méthode ?
+   Une méthode peut se comporter différemment selon les données reçues
+   Par exemple, AjouterMateriel() doit être testée avec :
+   - un matériel valide (résultat attendu : true)
+   - un doublon       (résultat attendu : false)
+   - null             (résultat attendu : false)
+   Tester un seul cas ne garantit pas que la méthode fonctionne dans toutes les situations
+
+4. Que signifient les trois étapes Arrange / Act / Assert ?
+   - Arrange : on prépare tout ce dont on a besoin
+   - Act     : on appelle la méthode que l'on veut tester
+   - Assert  : on vérifie que le résultat obtenu correspond au résultat attendu
+
+5. Pourquoi le polymorphisme est-il utile dans le calcul de la durée maximale totale ?
+   Dans CalculerDureeMaxTotale(), on parcourt une List<Materiel>
+   Chaque objet peut être un OrdinateurPortable, une Tablette ou un Videoprojecteur
+   Grâce au polymorphisme, quand on appelle m.CalculerDureeMaxEmprunt(), C# appelle
+   automatiquement la bonne version selon le type réel de l'objet (14, 7 ou 3 jours)
+   Sans polymorphisme, il faudrait écrire des if/else pour chaque type, ce qui rendrait
+   le code difficile à maintenir si on ajoute de nouveaux types de matériel
